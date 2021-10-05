@@ -1,25 +1,28 @@
-module.xml
+# EAP Kitchen sink application using external MySQL database.
 
-<?xml version="1.0" ?>
-<module xmlns="urn:jboss:module:1.1" name="com.mysql">
-  <resources>
-    <resource-root path="mysql-connector-java-8.0.26.jar"/>
-  </resources>
-  <dependencies>
-    <module name="javaee.api"/>
-    <module name="sun.jdk"/>
-    <module name="ibm.jdk"/>
-    <module name="javax.api"/>
-    <module name="javax.transaction.api"/>
-  </dependencies>
-</module>
+To run, first start a mysql database using docker-compose
+
+`docker-compose up`
+
+Run wildfly, from the EAP_HOME folder, run:
+
+`./bin/standalone.sh`
+
+deploy the Kitchen sink application, from the repo location run:
 
 
+`mvn clean install wildfly:deploy`
+
+Add the driver and datasource, from the EAP_HOME folder, run:
 
 
+```
 
 jboss-cli.sh
 
 /subsystem=datasources/jdbc-driver=mysql:add(driver-name=mysql,driver-module-name=com.mysql)
 
 data-source add --name=mysql --jndi-name=java:/jdbc/mysql --driver-name=mysql --connection-url=jdbc:mysql://127.0.0.1:3306/books --user-name=root --password=root
+```
+
+Test the kitchen sink app at:  http://127.0.0.1:8080/kitchensink/index.jsf
