@@ -1,5 +1,4 @@
 #!/bin/bash
-echo "XXXXXXXXXXXX Running install.sh XXXXXXXXXXXXXX"
 if [ "${SCRIPT_DEBUG}" = "true" ] ; then
     set -x
     echo "Script debugging is enabled, allowing bash commands and their arguments to be printed as they are executed"
