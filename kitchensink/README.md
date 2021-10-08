@@ -8,6 +8,8 @@ Run wildfly, from the EAP_HOME folder, run:
 
 `./bin/standalone.sh`
 
+Copy the contents of the modules folder to the EAP_HOME/modules folder.
+
 deploy the Kitchen sink application, from the repo location run:
 
 
