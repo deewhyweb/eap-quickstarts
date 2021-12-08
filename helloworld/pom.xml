@@ -42,7 +42,13 @@
     </licenses>
     
     <dependencies>
-
+        <dependency>
+            <groupId>org.jboss.bom</groupId>
+            <artifactId>jboss-eap-xp-microprofile</artifactId>
+            <version>3.0.0.GA</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
         <dependency>
             <groupId>org.eclipse.microprofile.health</groupId>
             <artifactId>microprofile-health-api</artifactId>
