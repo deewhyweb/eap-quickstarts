@@ -16,19 +16,28 @@
  */
 package org.jboss.as.quickstarts.helloworld;
 
-
+import org.eclipse.microprofile.health.HealthCheck;
+import org.eclipse.microprofile.health.HealthCheckResponse;
+import org.eclipse.microprofile.health.Liveness;
+import javax.enterprise.context.ApplicationScoped;
 /**
- * A simple CDI service which is able to say hello to someone
+ * <p>
+ * A simple servlet taking advantage of features added in 3.0.
+ * </p>
+ *
+ * <p>
+ * The servlet is registered and mapped to /HelloServlet using the {@linkplain WebServlet
+ * @HttpServlet}. The {@link HelloService} is injected by CDI.
+ * </p>
  *
  * @author Pete Muir
  *
  */
-public class HelloService {
-
-
-
-    String createHelloMessage(String name) {
-        return "Hello " + name + "!";
+@Liveness
+@ApplicationScoped
+public class HelloServiceHealth  implements HealthCheck {
+    @Override
+    public HealthCheckResponse call() {
+        return HealthCheckResponse.named("helloworld check").up().build();
     }
-
 }

@@ -31,6 +31,7 @@
     <packaging>war</packaging>
     <name>Quickstart: helloworld</name>
     <description>Helloworld</description>
+    <properties><version.microprofile.bom>3.0.0.GA</version.microprofile.bom></properties>
 
     <licenses>
         <license>
@@ -41,6 +42,12 @@
     </licenses>
     
     <dependencies>
+
+        <dependency>
+            <groupId>org.eclipse.microprofile.health</groupId>
+            <artifactId>microprofile-health-api</artifactId>
+            <scope>provided</scope>
+          </dependency>
 
         <!-- Import the CDI API, we use provided scope as the API is included in WildFly -->
         <dependency>
