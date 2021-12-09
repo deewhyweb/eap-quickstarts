@@ -15,6 +15,7 @@
  * limitations under the License.
  */
 package org.jboss.as.quickstarts.rshelloworld;
+import org.eclipse.microprofile.metrics.annotation.Counted;
 
 /**
  * A simple CDI service which is able to say hello to someone
@@ -22,6 +23,7 @@ package org.jboss.as.quickstarts.rshelloworld;
  * @author Pete Muir
  *
  */
+@Counted(name = "helloRestCalls", displayName="Calls to helloworld rest Service", description = "How many calls have been performed.")
 public class HelloService {
 
     String createHelloMessage(String name) {

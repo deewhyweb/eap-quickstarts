@@ -87,18 +87,26 @@
 
         <jboss.developer.drupal.url>http://rhdp-drupal.stage.redhat.com/</jboss.developer.drupal.url>
         <linkXRef>false</linkXRef>
+        <version.microprofile.bom>3.0.0.GA</version.microprofile.bom>
     </properties>
 
     <dependencyManagement>
 
         <dependencies> 
+        <dependency>
+            <groupId>org.jboss.bom</groupId>
+            <artifactId>jboss-eap-xp-microprofile</artifactId>
+            <version>${version.microprofile.bom}</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
             <!-- importing the jakartaee8-with-tools BOM adds specs and other useful artifacts as managed dependencies -->
             <dependency>
                 <groupId>org.jboss.bom</groupId>
                 <artifactId>jboss-eap-jakartaee8-with-tools</artifactId>
                 <version>${version.server.bom}</version>
                 <type>pom</type>
-                <scope>compile</scope>
+                <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
