@@ -38,6 +38,6 @@ import javax.enterprise.context.ApplicationScoped;
 public class HelloServiceHealth  implements HealthCheck {
     @Override
     public HealthCheckResponse call() {
-        return HealthCheckResponse.named("helloworld check").up().build();
+        return HealthCheckResponse.named("helloworld check edit").up().build();
     }
 }
