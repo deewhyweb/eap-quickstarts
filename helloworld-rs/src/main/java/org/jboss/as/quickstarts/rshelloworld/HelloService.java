@@ -23,7 +23,7 @@ import org.eclipse.microprofile.metrics.annotation.Counted;
  * @author Pete Muir
  *
  */
-@Counted(name = "helloRestCalls", displayName="Calls to helloworld rest Service", description = "How many calls have been performed.")
+@Counted(name = "helloRestCalls", displayName="Calls to helloworld rest Service", description = "How many calls have been performed to date.")
 public class HelloService {
 
     String createHelloMessage(String name) {
