@@ -109,13 +109,6 @@
     <dependencyManagement>
 
         <dependencies> 
-            <dependency>
-                <groupId>org.jboss.bom</groupId>
-                <artifactId>jboss-eap-xp-microprofile</artifactId>
-                <version>3.0.0.GA</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
             <!-- importing the jakartaee8-with-tools BOM adds specs and other useful artifacts as managed dependencies -->
             <dependency>
                 <groupId>org.jboss.bom</groupId>
@@ -127,14 +120,6 @@
         </dependencies>
     </dependencyManagement>
     <dependencies>
-
-        <dependency>
-            <groupId>org.eclipse.microprofile.metrics</groupId>
-            <artifactId>microprofile-metrics-api</artifactId>
-            <scope>provided</scope>
-          </dependency>
-          
-
         <!-- Import the CDI API, we use provided scope as the API is included in JBoss EAP -->
         <dependency>
             <groupId>jakarta.enterprise</groupId>
