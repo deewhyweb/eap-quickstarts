@@ -158,6 +158,135 @@
         </dependency>
     </dependencies>
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.asciidoctor</groupId>
+                    <artifactId>asciidoctor-maven-plugin</artifactId>
+                    <version>${version.org.asciidoctor.asciidoctor-maven-plugin}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.wildfly.plugins</groupId>
+                    <artifactId>wildfly-maven-plugin</artifactId>
+                    <version>${version.wildfly.maven.plugin}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-ejb-plugin</artifactId>
+                    <version>${version.ejb.plugin}</version>
+                    <configuration>
+                        <!-- Tell Maven we are using EJB -->
+                        <ejbVersion>3.2</ejbVersion>
+                    </configuration>
+                </plugin>
+                <!-- Checkstyle -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-checkstyle-plugin</artifactId>
+                    <version>${version.checkstyle.plugin}</version>
+                    <configuration>
+                        <configLocation>wildfly-checkstyle/checkstyle.xml</configLocation>
+                        <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                        <sourceDirectories>
+                            <directory>${project.build.sourceDirectory}</directory>
+                        </sourceDirectories>
+                        <resourceIncludes>**/*.properties,**/*.xml</resourceIncludes>
+                        <includeTestResources>true</includeTestResources>
+                        <includeResources>true</includeResources>
+                        <consoleOutput>true</consoleOutput>
+                        <failsOnError>true</failsOnError>
+                        <failOnViolation>true</failOnViolation>
+                    </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.wildfly.checkstyle</groupId>
+                            <artifactId>wildfly-checkstyle-config</artifactId>
+                            <version>${version.org.wildfly.checkstyle-config}</version>
+                        </dependency>
+                    </dependencies>
+                    <executions>
+                        <execution>
+                            <id>check-style</id>
+                            <phase>compile</phase>
+                            <goals>
+                                <goal>checkstyle</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>
+                                            com.redhat.rcm.maven.plugin
+                                        </groupId>
+                                        <artifactId>
+                                            buildmetadata-maven-plugin
+                                        </artifactId>
+                                        <versionRange>
+                                            [1.7.0,)
+                                        </versionRange>
+                                        <goals>
+                                            <goal>
+                                                provide-buildmetadata
+                                            </goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore />
+                                    </action>
+                                </pluginExecution>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>
+                                            org.commonjava.maven.plugins
+                                        </groupId>
+                                        <artifactId>
+                                            project-sources-maven-plugin
+                                        </artifactId>
+                                        <versionRange>
+                                            [0.3,)
+                                        </versionRange>
+                                        <goals>
+                                            <goal>archive</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore />
+                                    </action>
+                                </pluginExecution>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>
+                                            org.jboss.ws.plugins
+                                        </groupId>
+                                        <artifactId>
+                                            jaxws-tools-maven-plugin
+                                        </artifactId>
+                                        <versionRange>
+                                            [1.2.0.Final,)
+                                        </versionRange>
+                                        <goals>
+                                            <goal>wsconsume</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore />
+                                    </action>
+                                </pluginExecution>
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
@@ -166,6 +295,7 @@
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
+            
         </plugins>
         </build>
   
