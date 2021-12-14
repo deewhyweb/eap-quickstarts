@@ -133,7 +133,11 @@
             <artifactId>microprofile-metrics-api</artifactId>
             <scope>provided</scope>
           </dependency>
-          
+          <dependency>
+            <groupId>org.eclipse.microprofile.health</groupId>
+            <artifactId>microprofile-health-api</artifactId>
+            <scope>provided</scope>
+          </dependency>
 
         <!-- Import the CDI API, we use provided scope as the API is included in JBoss EAP -->
         <dependency>
