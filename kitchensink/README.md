@@ -27,4 +27,4 @@ jboss-cli.sh
 data-source add --name=mysql --jndi-name=java:/jdbc/mysql --driver-name=mysql --connection-url=jdbc:mysql://127.0.0.1:3306/books --user-name=root --password=root
 ```
 
-Test the kitchen sink app at:  http://127.0.0.1:8080/kitchensink/index.jsf
+Test the kitchen sink app at url:  http://127.0.0.1:8080/kitchensink/index.jsf
