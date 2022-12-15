@@ -7,7 +7,7 @@
     <module name="javaee.api"/>
     <module name="sun.jdk"/>
     <module name="ibm.jdk"/>
-    <module name="javax.api"/>
-    <module name="javax.transaction.api"/>
+    <module name="jakarta.api"/>
+    <module name="jakarta.transaction.api"/>
   </dependencies>
 </module>
