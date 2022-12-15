@@ -19,6 +19,7 @@ package org.jboss.as.quickstarts.kitchensink.controller;
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.enterprise.inject.Produces;
+import javax.faces.annotation.FacesConfig;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -32,6 +33,7 @@ import org.jboss.as.quickstarts.kitchensink.service.MemberRegistration;
 // Read more about the @Model stereotype in this FAQ:
 // http://www.cdi-spec.org/faq/#accordion6
 @Model
+@FacesConfig(version = FacesConfig.Version.JSF_2_3)
 public class MemberController {
 
     @Inject
