@@ -206,7 +206,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
-                    <version>${version.war.plugin}</version>
+                    <version>3.3.1</version>
                     <configuration>
                         <warName>ROOT</warName>
                     </configuration>
