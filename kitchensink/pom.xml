@@ -77,6 +77,7 @@
         <jboss.developer.drupal.url>http://rhdp-drupal.stage.redhat.com/</jboss.developer.drupal.url>
         <linkXRef>false</linkXRef>
         <version.microprofile.bom>3.0.0.GA</version.microprofile.bom>
+        <version.war.plugin>3.3.2</version.war.plugin>
     </properties>
      <repositories>
         <repository>
