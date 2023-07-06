@@ -228,7 +228,7 @@
         <!-- Set the name of the WAR, used as the context root when the app is deployed -->
         <finalName>${project.artifactId}</finalName>
         <plugins>
-        
+
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>${version.war.plugin}</version>
@@ -273,99 +273,99 @@
                     </execution>
                 </executions>
             </plugin>
-       
-<plugin>
-<groupId>org.jboss.windup.plugin</groupId>
-<artifactId>mtr-maven-plugin</artifactId>
-<version>1.1.1.GA-redhat-00001</version>
-<executions>
-<execution>
-<id>run-windup</id>
-<phase>package</phase>
-<goals>
-<goal>windup</goal>
-</goals>
-</execution>
-</executions>
-<configuration>
-<target>eap8</target>
-<offlineMode>true</offlineMode>
-</configuration>
-</plugin>
-      <plugin>
-      <executions>
-<execution>
-<id>zip</id>
-<phase>package</phase>
-<goals>
-<goal>zip</goal>
-</goals>
-</execution>
-</executions>
-  <groupId>co.aurasphere.maven.plugins</groupId>
-  <artifactId>zip-maven-plugin</artifactId>
-  <version>1.0.0</version>
-  <extensions>true</extensions>
-  <configuration>
-    <inputDirectory>${project.basedir}/target/windup-report</inputDirectory>
-    <outputDirectory>${project.basedir}/target/windup-zip</outputDirectory>
-    <zipName>windup-report</zipName>
-  </configuration>
-</plugin>
-         <plugin>
-            <groupId>ch.fortysix</groupId>
-            <artifactId>maven-postman-plugin</artifactId>
-            <version>0.1.6</version>
+
+            <plugin>
+                <groupId>org.jboss.windup.plugin</groupId>
+                <artifactId>mtr-maven-plugin</artifactId>
+                <version>1.1.1.GA-redhat-00001</version>
                 <executions>
-                   <execution>
-                       <id>Report Generation</id>
-                       <phase>package</phase>
-                       <goals>
-                           <goal>send-mail</goal>
-                       </goals>
-                       <inherited>true</inherited>
-                       <configuration>
-                          <!-- From Email address -->
-                          <from>philip@deewhy.ie</from>
-                          <!-- Email subject -->
-                          <subject>Migration Toolkit for Runtimes EAP8 migration Report</subject>
-                          <!-- Fail the build if the mail doesn't reach -->
-                          <failonerror>true</failonerror>
-                          <!-- Email Body Content -->
-                          <htmlMessage>
+                    <execution>
+                        <id>run-windup</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>windup</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <target>eap8</target>
+                    <offlineMode>true</offlineMode>
+                </configuration>
+            </plugin>
+            <plugin>
+                <executions>
+                    <execution>
+                        <id>zip</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>zip</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <groupId>co.aurasphere.maven.plugins</groupId>
+                <artifactId>zip-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <inputDirectory>${project.basedir}/target/windup-report</inputDirectory>
+                    <outputDirectory>${project.basedir}/target/windup-zip</outputDirectory>
+                    <zipName>windup-report</zipName>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>ch.fortysix</groupId>
+                <artifactId>maven-postman-plugin</artifactId>
+                <version>0.1.6</version>
+                <executions>
+                    <execution>
+                        <id>Report Generation</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>send-mail</goal>
+                        </goals>
+                        <inherited>true</inherited>
+                        <configuration>
+                            <!-- From Email address -->
+                            <from>${from}</from>
+                            <!-- Email subject -->
+                            <subject>Migration Toolkit for Runtimes EAP8 migration Report</subject>
+                            <!-- Fail the build if the mail doesn't reach -->
+                            <failonerror>true</failonerror>
+                            <!-- Email Body Content -->
+                            <htmlMessage>
                                     <![CDATA[
                                     <p>New  build triggered!</p>
                                     <p>Attached zip file contains the results of migration analysys to EAP 8</p> 
                                     ]]>
                           </htmlMessage>
-                          <!-- host -->
-                          <mailhost>smtp.sendgrid.net</mailhost>
-                          <!-- port of the host -->
-                          <mailport>25</mailport>
-                       
-                          <mailAltConfig>true</mailAltConfig>
-                          <!-- Email Authentication(Username and Password) -->
-                          <mailuser>apikey</mailuser>
-                          <mailpassword>${password}</mailpassword>
-                          <receivers>
-                               <!-- To Email address -->
-                               <receiver>philip@deewhy.ie</receiver>
-                      
-                          </receivers>
-                          <fileSets>
-                             <fileSet>
-                                  <!-- Report directory Path -->
-                                  <directory>${basedir}/target/windup-zip</directory>
-                                       <includes>
-                                          <!-- Report file name -->
-                                          <include>windup-report.zip</include>
-                                       </includes>
-                             </fileSet>
-                          </fileSets>
-                       </configuration>
-                   </execution>
+                            <!-- host -->
+                            <mailhost>smtp.sendgrid.net</mailhost>
+                            <!-- port of the host -->
+                            <mailport>25</mailport>
+
+                            <mailAltConfig>true</mailAltConfig>
+                            <!-- Email Authentication(Username and Password) -->
+                            <mailuser>apikey</mailuser>
+                            <mailpassword>${password}</mailpassword>
+                            <receivers>
+                                <!-- To Email address -->
+                                <receiver>${receiver}</receiver>
+
+                            </receivers>
+                            <fileSets>
+                                <fileSet>
+                                    <!-- Report directory Path -->
+                                    <directory>${basedir}/target/windup-zip</directory>
+                                    <includes>
+                                        <!-- Report file name -->
+                                        <include>windup-report.zip</include>
+                                    </includes>
+                                </fileSet>
+                            </fileSets>
+                        </configuration>
+                    </execution>
                 </executions>
-         </plugin>
+            </plugin>
         </plugins>
     </build>
     <profiles>
